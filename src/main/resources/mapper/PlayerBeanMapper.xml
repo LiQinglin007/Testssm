@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomi.dao.PlayerBeanMapper">
+  <resultMap id="BaseResultMap" type="com.xiaomi.bean.PlayerBean">
+    <constructor>
+      <idArg column="playerId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="playerName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="playerPosition" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="playerNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="championNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+
+</mapper>

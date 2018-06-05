@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="nbadb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="nbadb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="editormi"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="online_retailers_test"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="smarthouse"/>
+    <schema id="9" parent="1" name="test"/>
+    <schema id="10" parent="1" name="testjavaservlet"/>
+    <table id="11" parent="2" name="championteam"/>
+    <table id="12" parent="2" name="coach"/>
+    <table id="13" parent="2" name="player"/>
+    <table id="14" parent="2" name="team"/>
+    <table id="15" parent="2" name="test"/>
+    <routine id="16" parent="2" name="addPlayer">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <routine id="17" parent="2" name="deletePlyerById">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="18" parent="2" name="detelePlayerByIdReturnPlayerSum">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="19" parent="2" name="f1">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <routine id="20" parent="2" name="f2">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <routine id="21" parent="2" name="f3">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <routine id="22" parent="2" name="queryPlayerNumberAndChampionSumByTeamId">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="23" parent="2" name="sp1">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <column id="24" parent="11" name="teamId">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="11" name="teamName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="26" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>teamId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="12" name="coachId">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="12" name="coachName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="12" name="championNumber">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="30" parent="12" name="teamId">
+      <Position>4</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="12" name="parentId">
+      <Position>5</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="32" parent="12" name="coachName">
+      <ColNames>coachName</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="33" parent="12" name="teamId">
+      <ColNames>teamId</ColNames>
+    </index>
+    <key id="34" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>coachId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="35" parent="12" name="coachName">
+      <ColNames>coachName</ColNames>
+      <UnderlyingIndexName>coachName</UnderlyingIndexName>
+    </key>
+    <foreign-key id="36" parent="12" name="coach_ibfk_1">
+      <ColNames>teamId</ColNames>
+      <RefSchemaName>nbadb</RefSchemaName>
+      <RefTableName>team</RefTableName>
+      <RefColNames>teamId</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="37" parent="13" name="playerId">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="13" name="playerName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="13" name="playerPosition">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="13" name="playerNumber">
+      <Position>4</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="13" name="teamId">
+      <Position>5</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="13" name="championNumber">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="43" parent="13" name="teamId">
+      <ColNames>teamId</ColNames>
+    </index>
+    <key id="44" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>playerId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="14" name="teamId">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="14" name="teamName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="14" name="teamAge">
+      <Position>3</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+    </column>
+    <column id="48" parent="14" name="championNumber">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="14" name="ballHall">
+      <Position>5</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="50" parent="14" name="toalMatch">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="14" name="victoryNumber">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="52" parent="14" name="teamName">
+      <ColNames>teamName</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="53" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>teamId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="54" parent="14" name="teamName">
+      <ColNames>teamName</ColNames>
+      <UnderlyingIndexName>teamName</UnderlyingIndexName>
+    </key>
+    <column id="55" parent="15" name="test_name">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <argument id="56" parent="16">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="57" parent="16" name="playerName">
+      <DataType>varchar(20)|0</DataType>
+    </argument>
+    <argument id="58" parent="16" name="playerPosition">
+      <DataType>varchar(20)|0</DataType>
+    </argument>
+    <argument id="59" parent="16" name="playerNumber">
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="60" parent="16" name="teamId">
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="61" parent="16" name="championNumber">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="62" parent="17" name="id">
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="63" parent="18" name="id">
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="64" parent="18" name="playerSum">
+      <ArgumentDirection>O</ArgumentDirection>
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="65" parent="19">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>varchar(30)|0</DataType>
+    </argument>
+    <argument id="66" parent="20">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>float(10,2)|0</DataType>
+    </argument>
+    <argument id="67" parent="20" name="num1">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="68" parent="20" name="num2">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="69" parent="21">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="70" parent="21" name="v1">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="71" parent="21" name="v2">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="72" parent="22" name="p_teamId">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="73" parent="22" name="playerSumForTeam">
+      <ArgumentDirection>O</ArgumentDirection>
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+    <argument id="74" parent="22" name="championSum">
+      <ArgumentDirection>O</ArgumentDirection>
+      <DataType>int(10) unsigned|0</DataType>
+    </argument>
+  </database-model>
+</dataSource>
