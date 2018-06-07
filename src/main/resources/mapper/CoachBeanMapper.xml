@@ -10,6 +10,97 @@
       <arg column="parentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List">
+    coachId, coachName, championNumber, teamId, parentId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from coach
+    where coachId = #{coachid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from coach
+    where coachId = #{coachid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaomi.bean.CoachBean">
+    insert into coach (coachId, coachName, championNumber, 
+      teamId, parentId)
+    values (#{coachid,jdbcType=INTEGER}, #{coachname,jdbcType=VARCHAR}, #{championnumber,jdbcType=INTEGER}, 
+      #{teamid,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaomi.bean.CoachBean">
+    insert into coach
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="coachid != null">
+        coachId,
+      </if>
+      <if test="coachname != null">
+        coachName,
+      </if>
+      <if test="championnumber != null">
+        championNumber,
+      </if>
+      <if test="teamid != null">
+        teamId,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="coachid != null">
+        #{coachid,jdbcType=INTEGER},
+      </if>
+      <if test="coachname != null">
+        #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="championnumber != null">
+        #{championnumber,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomi.bean.CoachBean">
+    update coach
+    <set>
+      <if test="coachname != null">
+        coachName = #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="championnumber != null">
+        championNumber = #{championnumber,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        teamId = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where coachId = #{coachid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomi.bean.CoachBean">
+    update coach
+    set coachName = #{coachname,jdbcType=VARCHAR},
+      championNumber = #{championnumber,jdbcType=INTEGER},
+      teamId = #{teamid,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=INTEGER}
+    where coachId = #{coachid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="CoachResultMap" type="com.xiaomi.bean.CoachBean">
+    <constructor>
+      <idArg column="coachId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="coachName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="championNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="parentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
 
 
 </mapper>

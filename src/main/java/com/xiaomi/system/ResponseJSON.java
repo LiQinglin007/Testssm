@@ -1,15 +1,18 @@
-package com.xiaomi.pojo;
+package com.xiaomi.system;
 
-public class ResultJson {
+/**
+ * 统一返回格式
+ */
+public class ResponseJSON {
     private int code;
     private String msg;
     private Object data;
 
 
-    public ResultJson() {
+    public ResponseJSON() {
     }
 
-    public ResultJson(int code, String msg, Object data) {
+    public ResponseJSON(int code, String msg, Object data) {
         this.code = code;
         this.msg = msg;
         this.data = data;

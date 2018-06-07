@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomi.dao.RoleBeanMapper">
+    <resultMap id="BaseResultMap" type="com.xiaomi.bean.RoleBean">
+        <constructor>
+            <idArg column="role_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="role_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="menu_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <select id="selectMenuIdByUserId" parameterType="String" resultType="Map">
+    select role.menu_id FROM role where FIND_IN_SET(role.role_id,(select `user`.user_type from `user` where user_id=#{_parameter}))
+  </select>
+</mapper>

@@ -11,5 +11,109 @@
       <arg column="championNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List">
+    playerId, playerName, playerPosition, playerNumber, teamId, championNumber
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from player
+    where playerId = #{playerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from player
+    where playerId = #{playerid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaomi.bean.PlayerBean">
+    insert into player (playerId, playerName, playerPosition, 
+      playerNumber, teamId, championNumber
+      )
+    values (#{playerid,jdbcType=INTEGER}, #{playername,jdbcType=VARCHAR}, #{playerposition,jdbcType=VARCHAR}, 
+      #{playernumber,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, #{championnumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaomi.bean.PlayerBean">
+    insert into player
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="playerid != null">
+        playerId,
+      </if>
+      <if test="playername != null">
+        playerName,
+      </if>
+      <if test="playerposition != null">
+        playerPosition,
+      </if>
+      <if test="playernumber != null">
+        playerNumber,
+      </if>
+      <if test="teamid != null">
+        teamId,
+      </if>
+      <if test="championnumber != null">
+        championNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="playerid != null">
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null">
+        #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="playerposition != null">
+        #{playerposition,jdbcType=VARCHAR},
+      </if>
+      <if test="playernumber != null">
+        #{playernumber,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="championnumber != null">
+        #{championnumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomi.bean.PlayerBean">
+    update player
+    <set>
+      <if test="playername != null">
+        playerName = #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="playerposition != null">
+        playerPosition = #{playerposition,jdbcType=VARCHAR},
+      </if>
+      <if test="playernumber != null">
+        playerNumber = #{playernumber,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        teamId = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="championnumber != null">
+        championNumber = #{championnumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where playerId = #{playerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomi.bean.PlayerBean">
+    update player
+    set playerName = #{playername,jdbcType=VARCHAR},
+      playerPosition = #{playerposition,jdbcType=VARCHAR},
+      playerNumber = #{playernumber,jdbcType=INTEGER},
+      teamId = #{teamid,jdbcType=INTEGER},
+      championNumber = #{championnumber,jdbcType=INTEGER}
+    where playerId = #{playerid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="PlayerResultMap" type="com.xiaomi.bean.PlayerBean">
+    <constructor>
+      <idArg column="playerId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="playerName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="playerPosition" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="playerNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="championNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
 
 </mapper>

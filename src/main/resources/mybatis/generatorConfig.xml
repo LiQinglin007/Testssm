@@ -63,7 +63,7 @@
         -->
         <!-- sql占位符，表示所有的表 -->
         <!--<table tableName="%">-->
-            <!--<generatedKey column="epa_id" sqlStatement="Mysql" identity="true" />-->
+        <!--<generatedKey column="epa_id" sqlStatement="Mysql" identity="true" />-->
         <!--</table>-->
 
         <table schema="nbadb" tableName="team"
@@ -98,5 +98,29 @@
                enableUpdateByExample="false">
         </table>
 
+        <table schema="nbadb" tableName="user"
+               domainObjectName="UserBean"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+        </table>
+
+        <table schema="nbadb" tableName="role"
+               domainObjectName="RoleBean"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+        </table>
+
+
+        <table schema="nbadb" tableName="menu"
+               domainObjectName="MenuBean"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+        </table>
     </context>
 </generatorConfiguration>

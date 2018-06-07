@@ -12,5 +12,120 @@
       <arg column="victoryNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List">
+    teamId, teamName, teamAge, championNumber, ballHall, toalMatch, victoryNumber
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from team
+    where teamId = #{teamid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from team
+    where teamId = #{teamid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaomi.bean.TeamBean">
+    insert into team (teamId, teamName, teamAge, 
+      championNumber, ballHall, toalMatch, 
+      victoryNumber)
+    values (#{teamid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{teamage,jdbcType=TINYINT}, 
+      #{championnumber,jdbcType=INTEGER}, #{ballhall,jdbcType=VARCHAR}, #{toalmatch,jdbcType=INTEGER}, 
+      #{victorynumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaomi.bean.TeamBean">
+    insert into team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teamid != null">
+        teamId,
+      </if>
+      <if test="teamname != null">
+        teamName,
+      </if>
+      <if test="teamage != null">
+        teamAge,
+      </if>
+      <if test="championnumber != null">
+        championNumber,
+      </if>
+      <if test="ballhall != null">
+        ballHall,
+      </if>
+      <if test="toalmatch != null">
+        toalMatch,
+      </if>
+      <if test="victorynumber != null">
+        victoryNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="teamage != null">
+        #{teamage,jdbcType=TINYINT},
+      </if>
+      <if test="championnumber != null">
+        #{championnumber,jdbcType=INTEGER},
+      </if>
+      <if test="ballhall != null">
+        #{ballhall,jdbcType=VARCHAR},
+      </if>
+      <if test="toalmatch != null">
+        #{toalmatch,jdbcType=INTEGER},
+      </if>
+      <if test="victorynumber != null">
+        #{victorynumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomi.bean.TeamBean">
+    update team
+    <set>
+      <if test="teamname != null">
+        teamName = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="teamage != null">
+        teamAge = #{teamage,jdbcType=TINYINT},
+      </if>
+      <if test="championnumber != null">
+        championNumber = #{championnumber,jdbcType=INTEGER},
+      </if>
+      <if test="ballhall != null">
+        ballHall = #{ballhall,jdbcType=VARCHAR},
+      </if>
+      <if test="toalmatch != null">
+        toalMatch = #{toalmatch,jdbcType=INTEGER},
+      </if>
+      <if test="victorynumber != null">
+        victoryNumber = #{victorynumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where teamId = #{teamid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomi.bean.TeamBean">
+    update team
+    set teamName = #{teamname,jdbcType=VARCHAR},
+      teamAge = #{teamage,jdbcType=TINYINT},
+      championNumber = #{championnumber,jdbcType=INTEGER},
+      ballHall = #{ballhall,jdbcType=VARCHAR},
+      toalMatch = #{toalmatch,jdbcType=INTEGER},
+      victoryNumber = #{victorynumber,jdbcType=INTEGER}
+    where teamId = #{teamid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="TeamResultMap" type="com.xiaomi.bean.TeamBean">
+    <constructor>
+      <idArg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teamName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="teamAge" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="championNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ballHall" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="toalMatch" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="victoryNumber" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
 
 </mapper>

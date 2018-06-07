@@ -100,9 +100,10 @@
             <!--拦截匹配URL 这里是拦截所有的-->
             <mvc:mapping path="/**"/>
             <!--放过部分请求-->
-            <!--<mvc:exclude-mapping path="/home/login.html" />-->
-            <!--自定义的拦截器-->
-            <bean class="com.xiaomi.interceptor.LoginInterceptor">
+            <!-- 过滤浏览器发起的/favicon.ico请求，防止session被清空 -->
+            <mvc:exclude-mapping path="/favicon.ico"/>
+            <!--自定义的拦截器  日志拦截器-->
+            <bean class="com.xiaomi.interceptor.TestInterceptor">
                 <property name="charset" value="utf-8"></property>
                 <property name="allowUrls">
                     <list><!--如果请求中包含以下路径，则不进行拦截-->
