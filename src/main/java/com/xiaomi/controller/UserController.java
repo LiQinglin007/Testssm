@@ -8,7 +8,6 @@ import com.xiaomi.service.IUserService;
 import com.xiaomi.system.ResponseJSON;
 import com.xiaomi.utils.ResponseUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +35,13 @@ public class UserController {
     @Resource
     private IMenuService mIMenuService;
 
+    /**
+     * 登录接口
+     *
+     * @param userName 用户名
+     * @param password 登录密码
+     * @return
+     */
     @ResponseBody
     @RequestMapping("login")
     public ResponseJSON login(@RequestParam(value = "userName", required = true) String userName,
@@ -53,7 +59,6 @@ public class UserController {
                     menuId = menuId + map1.get("menu_id") + ",";
                 }
                 List<MenuBean> menuBeans = mIMenuService.selectMenuByListId(menuId);
-
                 map.put("userId", login.getUserId());
                 map.put("userType", login.getUserType());
                 map.put("userMenu", menuBeans);
