@@ -1,71 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaomi.dao.ChampionteamBeanMapper">
-  <resultMap id="BaseResultMap" type="com.xiaomi.bean.ChampionteamBean">
-    <constructor>
-      <idArg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="teamName" javaType="java.lang.String" jdbcType="VARCHAR" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
-    teamId, teamName
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from championteam
-    where teamId = #{teamid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from championteam
-    where teamId = #{teamid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.xiaomi.bean.ChampionteamBean">
-    insert into championteam (teamId, teamName)
-    values (#{teamid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.xiaomi.bean.ChampionteamBean">
-    insert into championteam
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="teamid != null">
-        teamId,
-      </if>
-      <if test="teamname != null">
-        teamName,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="teamid != null">
-        #{teamid,jdbcType=INTEGER},
-      </if>
-      <if test="teamname != null">
-        #{teamname,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomi.bean.ChampionteamBean">
-    update championteam
-    <set>
-      <if test="teamname != null">
-        teamName = #{teamname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where teamId = #{teamid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xiaomi.bean.ChampionteamBean">
-    update championteam
-    set teamName = #{teamname,jdbcType=VARCHAR}
-    where teamId = #{teamid,jdbcType=INTEGER}
-  </update>
-  <resultMap id="ChampionteamResultMap" type="com.xiaomi.bean.ChampionteamBean">
-    <constructor>
-      <idArg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="teamName" javaType="java.lang.String" jdbcType="VARCHAR" />
-    </constructor>
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.xiaomi.bean.ChampionteamBean">
+        <constructor>
+            <idArg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="teamName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
 
-  <!--这里的id  是所有的id都不能重复，唯一的，访问的时候需要加上mapper中的名称，这样保证单个文件里的唯一性就可以了-->
-  <select id="selectAll" resultMap="ChampionteamResultMap">
+    <resultMap id="ChampionteamResultMap" type="com.xiaomi.bean.ChampionteamBean">
+        <constructor>
+            <idArg column="teamId" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="teamName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <!--这里的id  是所有的id都不能重复，唯一的，访问的时候需要加上mapper中的名称，这样保证单个文件里的唯一性就可以了-->
+    <select id="selectAll" resultMap="ChampionteamResultMap">
     SELECT teamId ,teamName FROM  championteam
-  </select>
+    </select>
+
+    <!--按id修改冠军球队名称-->
+    <update id="updateById" parameterType="com.xiaomi.bean.ChampionteamBean">
+    UPDATE championteam set teamName =#{teamname} WHERE teamId=#{teamid}
+    </update>
+
+    <!--插入一个-->
+    <insert id="insertOne" parameterType="com.xiaomi.bean.ChampionteamBean">
+        INSERT INTO championteam(teamName) VALUE (#{teamName})
+    </insert>
+
+    <!--按id删除-->
+    <delete id="deleteById" parameterType="Integer">
+        DELETE FROM championteam WHERE teamId=#{_parameter}
+    </delete>
+
+
 </mapper>

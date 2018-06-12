@@ -1,7 +1,6 @@
 package com.xiaomi.service;
 
 
-
 import com.xiaomi.bean.ChampionteamBean;
 import com.xiaomi.dao.ChampionteamBeanMapper;
 import org.springframework.stereotype.Service;
@@ -18,5 +17,20 @@ public class ChampionTeamService implements IChampionTeamService {
     public List<ChampionteamBean> selectAll() {
         List<ChampionteamBean> championTeams = this.championMapper.selectAll();
         return championTeams;
+    }
+
+    @Override
+    public int insertOne(String teamName) {
+        return this.championMapper.insertOne(teamName);
+    }
+
+    @Override
+    public int updateById(ChampionteamBean championteamBean) {
+        return this.championMapper.updateById(championteamBean);
+    }
+
+    @Override
+    public int deleteById(int championteamId) {
+        return championMapper.deleteById(championteamId);
     }
 }
