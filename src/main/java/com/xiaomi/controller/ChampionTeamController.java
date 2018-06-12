@@ -16,6 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/ChampionTeamController")
+//@Api(description = "API接口")
 public class ChampionTeamController {
 
     @Resource
@@ -23,6 +24,7 @@ public class ChampionTeamController {
 
     @ResponseBody
     @RequestMapping(value = "/selectAll")
+//    @ApiOperation(value = "获取冠军球队列表", httpMethod = "GET", response = ResponseJSON.class, notes = "获取冠军球队List")
     public ResponseJSON selectAll() {
         ResponseJSON jsonBean = ResponseUtils.getFiledResponseBean("查询失败", null);
         List<ChampionteamBean> championTeams = championTeamService.selectAll();
@@ -33,6 +35,8 @@ public class ChampionTeamController {
 
     @ResponseBody
     @RequestMapping(value = "/addChampionTeam")
+//    @ApiOperation(value = "增加一个冠军球队", httpMethod = "GET", response = ResponseJSON.class, notes = "增加一个冠军球队11")
+//    public ResponseJSON addChampionTeam(@ApiParam(required = true, name = "teamNameApiParam", value = "教程入参")  @RequestParam(value = "teamName") String teamName) {
     public ResponseJSON addChampionTeam(@RequestParam(value = "teamName") String teamName) {
         ResponseJSON jsonBean = ResponseUtils.getFiledResponseBean("添加失败", null);
         int number = championTeamService.insertOne(teamName);

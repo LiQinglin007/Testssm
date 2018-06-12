@@ -43,7 +43,7 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public ResponseJSON login(@RequestParam(value = "userName", required = true) String userName,
                               @RequestParam(value = "password", required = true) String password) {
         ResponseJSON responseBean = ResponseUtils.getFiledResponseBean("登录失败", null);
@@ -71,9 +71,6 @@ public class UserController {
         }
         return responseBean;
     }
-
-
-
 
 
 }

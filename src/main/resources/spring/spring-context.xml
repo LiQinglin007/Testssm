@@ -21,6 +21,11 @@
     <!--日志-->
     <context:component-scan base-package="com.xiaomi.utils" />
 
+    <!--配置生成API文件-->
+    <!--<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>-->
+    <!--<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>-->
+    <!--<context:component-scan base-package="springfox.*"/>-->
+
     <!-- 1.1 关联jdbc.properties -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
@@ -83,7 +88,6 @@
 
     <!-- 定义静态页面访问 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
-
 
 
 </beans>

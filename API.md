@@ -3,7 +3,7 @@ code:200 成功   100失败<br>
 
 msg:接口说明<br>
 
-BaseUrl:
+BaseUrl:http://lixiaomi007.xicp.cn:12542/
 
 #### 1.登录接口<br>
 
