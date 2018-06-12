@@ -1,10 +1,11 @@
+###接口说明
 code:200 成功   100失败<br>
 
 msg:接口说明<br>
 
 BaseUrl:
 
-1.登录接口<br>
+####1.登录接口<br>
 
 函数调用地址：User/login <br>
 
@@ -37,7 +38,7 @@ BaseUrl:
 }
 ```
 
-2.查询全部<br>
+####2.查询全部<br>
 
 函数调用地址：ChampionTeamController/selectAll <br>
 
@@ -66,7 +67,7 @@ BaseUrl:
 ```
 
 
-3.添加冠军球队<br>
+####3.添加冠军球队<br>
 
 函数调用地址：ChampionTeamController/addChampionTeam <br>
 
@@ -86,7 +87,7 @@ BaseUrl:
 ```
 
 
-4.修改冠军球队名称<br>
+####4.修改冠军球队名称<br>
 
 函数调用地址：ChampionTeamController/updateChampionTeam <br>
 
@@ -108,7 +109,7 @@ BaseUrl:
 ```
 
 
-5.删除冠军球队<br>
+####5.删除冠军球队<br>
 
 函数调用地址：ChampionTeamController/deleteChampionTeam <br>
 
