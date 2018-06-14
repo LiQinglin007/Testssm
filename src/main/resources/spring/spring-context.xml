@@ -18,8 +18,9 @@
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.xiaomi"></context:component-scan>
     <context:component-scan base-package="com.xiaomi.dao"></context:component-scan>
+
     <!--日志-->
-    <context:component-scan base-package="com.xiaomi.utils" />
+    <context:component-scan base-package="com.xiaomi.utils"/>
 
     <!--配置生成API文件-->
     <!--<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>-->
@@ -83,11 +84,30 @@
             <tx:method name="find*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
-    <!-- task任务扫描注解 -->
-    <task:annotation-driven/>
+
+
 
     <!-- 定义静态页面访问 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
+
+
+    <!-- task任务扫描注解 -->
+    <task:executor id="executor" pool-size="3"/>
+    <task:scheduler id="scheduler" pool-size="3"/>
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
+    <!--定时任务开始-->
+    <!--定时任务包-->
+    <context:component-scan base-package="com.xiaomi.task"></context:component-scan>
+
+    <!--启用定时任务-->
+    <task:scheduled-tasks>
+        <!--ref:类注解的值  method:方法名
+        cron:表达式  详解：https://www.cnblogs.com/javahr/p/8318728.html
+        -->
+        <!--每天的10:00—11:00 每5s执行一次-->
+        <task:scheduled ref="TestTask" method="sysTime" cron="0/5 * 10 * * *"/>
+    </task:scheduled-tasks>
+
 
 
 </beans>
