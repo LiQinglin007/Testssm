@@ -6,6 +6,7 @@ import com.xiaomi.service.IMenuService;
 import com.xiaomi.service.IRoleBeanService;
 import com.xiaomi.service.IUserService;
 import com.xiaomi.system.ResponseJSON;
+import com.xiaomi.utils.CheckStringEmptyUtils;
 import com.xiaomi.utils.ResponseUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,14 @@ public class UserController {
     public ResponseJSON login(@RequestParam(value = "userName", required = true) String userName,
                               @RequestParam(value = "password", required = true) String password) {
         ResponseJSON responseBean = ResponseUtils.getFiledResponseBean("登录失败", null);
+        if (CheckStringEmptyUtils.IsEmpty(userName)) {
+            responseBean.setMsg("用户名不能为空");
+            return responseBean;
+        }
+        if (CheckStringEmptyUtils.IsEmpty(password)) {
+            responseBean.setMsg("密码不能为空");
+            return responseBean;
+        }
         UserBean login = mUserService.login(userName);
         if (login != null) {
             if (login.getUserPassword().equals(password)) {
