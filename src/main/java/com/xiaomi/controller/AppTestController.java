@@ -32,7 +32,7 @@ public class AppTestController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/getMothod", method = RequestMethod.GET)
     public ResponseJSON getMothod(@RequestParam String parameter) {
         ResponseJSON jsonBean = ResponseUtils.getSuccessResponseBean("Get请求成功", parameter);
         return jsonBean;
